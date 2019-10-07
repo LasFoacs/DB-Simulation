@@ -13,8 +13,8 @@ const map<string, int> LogicOper =
 
 Table Compute(const string& exp)
 {
-	stack<pair<char, string>> oper;	//·ûºÅÕ»£¬´æ·ûºÅ¼°·ûºÅËù´ø±í´ïÊ½
-	stack<Table> st;				//±íÕ»
+	stack<pair<char, string>> oper;	//ç¬¦å·æ ˆï¼Œå­˜ç¬¦å·åŠç¬¦å·æ‰€å¸¦è¡¨è¾¾å¼
+	stack<Table> st;				//è¡¨æ ˆ
 	AnalyExp(exp, oper, st);
 	while (!oper.empty())
 	{
@@ -36,7 +36,7 @@ Table Compute(const string& exp)
 		}
 		if (op.first == '@')
 		{
-			//´Ë´¦Ó¦µ±·ÖÎöstringÖĞµÄÂß¼­
+			//æ­¤å¤„åº”å½“åˆ†æstringä¸­çš„é€»è¾‘
 			auto t = st.top();
 			st.pop();
 			st.push(DoSel(t, op.second));
@@ -46,14 +46,14 @@ Table Compute(const string& exp)
 	return st.top();
 }
 void AnalyExp(const string& exp, stack<pair<char, string>>& oper, stack<Table>& st)
-{//Ôİ²»´¦Àíand or not
+{//æš‚ä¸å¤„ç†and or not
 
 	for (unsigned int i = 0; i < exp.size(); ++i)
 	{
 		if (exp[i] == '#' || exp[i] == '@')
 		{
 			pair<char, string> pss = { exp[i], "" };
-			i += 2;	//Ìø¹ı ( µ½ºóÃæµÄ±í´ïÊ½ÖĞ
+			i += 2;	//è·³è¿‡ ( åˆ°åé¢çš„è¡¨è¾¾å¼ä¸­
 			while (exp[i] != ']')
 				pss.second += exp[i++];
 			oper.push(pss);
@@ -104,7 +104,7 @@ void DoSelByLog(stack<Table>& keys, stack<string>& logics)
 	logics.pop();
 }
 Table DoSel(Table& t, const string& exp)
-{//Ó¦ÓÃ¼ÆËã·¨£¬¶¨ and > or > ) ½øĞĞ¼ÆËã
+{//åº”ç”¨è®¡ç®—æ³•ï¼Œå®š and > or > ) è¿›è¡Œè®¡ç®—
 	stack<Table> keys;
 	stack<string> logics;
 	istringstream iss(exp);
@@ -195,6 +195,6 @@ vector<string> SplitForSel(const string& s)
 }
 //"#(s.Sno)@(c.Cname = math)@(sc.Cno = c.Cno)@(s.Sno = sc.Sno)s*sc*c"
 //"#(s.Sno)@(sc.Cno = c.Cno and c.Cname = math)@(s.Sno = sc.Sno)s*sc*c"
-//#ÒÔ¼°@µÄÌõ¼şÓÃ[]Ğ´£¬¶Ô()½øĞĞË³ĞòµÄ·ÖÎö
+//#ä»¥åŠ@çš„æ¡ä»¶ç”¨[]å†™ï¼Œå¯¹()è¿›è¡Œé¡ºåºçš„åˆ†æ
 
 
