@@ -1,0 +1,4 @@
+     Cname       Cno
+      math       101
+   english       102
+    social       103
