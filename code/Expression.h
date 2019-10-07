@@ -6,7 +6,7 @@
 #include <sstream>
 
 Table Compute(const string& exp);
-//¸ù¾İÊäÈëµÄ±íÃû£¬¶ÁÈë¶ÔÓ¦µÄÎÄ¼ş
+//æ ¹æ®è¾“å…¥çš„è¡¨åï¼Œè¯»å…¥å¯¹åº”çš„æ–‡ä»¶
 /*def:	@ is Selection
 		# is Projection
 		* is Product
