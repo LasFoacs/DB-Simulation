@@ -9,4 +9,7 @@ a work for elective course DB
 5.Expression文件实现了对于关系表达式的计算    
 6.SqlLanguage文件实现了解析并执行sql语句    
     
+将table里的txt文件和code放进同一文件夹就可以运行，会根据sql语句读取表文件。     
+也可以使用WriteToFile函数写一个新的表，详见代码。     
+     
 由于没学过编译原理，该程序效率较为低下    
